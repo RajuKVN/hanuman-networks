@@ -1,0 +1,59 @@
+{
+  "common": {
+    "loading": "Loading plans…",
+    "error": "Something went wrong",
+    "retry": "Try again",
+    "noPlans": "No plans available",
+    "noPlansDesc": "Check back soon or contact us directly.",
+    "popular": "Popular",
+    "viewDetails": "View Details",
+    "close": "Close",
+    "send": "Send via WhatsApp",
+    "channels": "channels",
+    "channel": "channel",
+    "days": "days",
+    "day": "day",
+    "mbps": "Mbps",
+    "ottApps": "OTT Apps",
+    "more": "+{{count}} more"
+  },
+  "home": {
+    "title": "Our Plans",
+    "subtitle": "Pick the plan that fits your family."
+  },
+  "plan": {
+    "validity": "Validity",
+    "speed": "Speed",
+    "channels": "TV Channels",
+    "price": "₹{{amount}}/mo",
+    "category": {
+      "basic": "Basic",
+      "standard": "Standard",
+      "premium": "Premium",
+      "ultra": "Ultra"
+    }
+  },
+  "inquiry": {
+    "title": "Get This Plan",
+    "name": "Your Name",
+    "namePlaceholder": "Enter your name",
+    "mobile": "Mobile Number",
+    "mobilePlaceholder": "10-digit mobile number",
+    "area": "Address",
+    "areaPlaceholder": "e.g. `123, Main Street, Anytown, India`",
+    "submit": "Send via WhatsApp",
+    "submitting": "Opening WhatsApp…",
+    "errorName": "Name is required",
+    "errorMobile": "Enter a valid 10-digit mobile number",
+    "errorArea": "Area is required",
+    "successTitle": "Opening WhatsApp!",
+    "successDesc": "Complete your inquiry in WhatsApp. This panel will close shortly."
+  },
+  "header": {
+    "tagline": "Cable TV & OTT Plans"
+  },
+  "lang": {
+    "en": "EN",
+    "te": "తె"
+  }
+}
