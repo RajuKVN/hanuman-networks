@@ -1,6 +1,6 @@
-# Hanuman Networks — Cable & OTT Plan Browser
+# Hanuman Networks — Cable TV, Internet & OTT Plan Browser
 
-A fast, mobile-first React app that lets customers browse cable TV and OTT subscription plans and send WhatsApp inquiries in one tap.
+A fast, mobile-first React app that lets customers browse Internet, OTT, and Internet+OTT combo plans across three tabbed views, and send WhatsApp inquiries in one tap.
 
 ---
 
@@ -46,20 +46,56 @@ Your entire "admin panel" is a GitHub Gist JSON file.
 
 ### `plans.json` Template
 
+The file now has **three sections**: `ottPlans`, `internetPlans`, and `comboPlans`.  
+Each plan uses a `pricing` array so you can offer monthly and multi-duration prices.
+
 ```json
 {
   "whatsappNumber": "919876543210",
   "operatorName": "Hanuman Networks",
-  "plans": [
+
+  "ottPlans": [
     {
       "id": "smartplay-gold-spl",
+      "type": "ott",
       "name": "SmartPlay Gold SPL",
-      "price": 249,
+      "pricing": [{ "label": "Monthly", "months": 1, "price": 249 }],
       "ottCount": 29,
       "ottApps": ["JIO HOTSTAR", "ZEE5", "SONY LIV", "SUN NXT", "DISCOVERY+"],
-      "tvChannels": null,
-      "validityDays": 30,
-      "speedMbps": null,
+      "category": "premium",
+      "isPopular": true,
+      "sortOrder": 1
+    }
+  ],
+
+  "internetPlans": [
+    {
+      "id": "internet-40mbps",
+      "type": "internet",
+      "name": "40 Mbps Broadband",
+      "speedMbps": 40,
+      "pricing": [{ "label": "Monthly", "months": 1, "price": 450 }],
+      "category": "basic",
+      "isPopular": false,
+      "sortOrder": 1
+    }
+  ],
+
+  "comboPlans": [
+    {
+      "id": "smartplay-gold-pack",
+      "type": "combo",
+      "name": "SmartPlay Gold Pack",
+      "speedMbps": 40,
+      "tvChannels": 350,
+      "ottCount": 14,
+      "ottApps": ["AHA TELUGU", "SONY LIV", "JIO HOTSTAR", "SUN NXT", "ZEE5", "FANCODE"],
+      "pricing": [
+        { "label": "Monthly",   "months": 1,  "price": 750  },
+        { "label": "3 Months",  "months": 3,  "price": 2249 },
+        { "label": "6 Months",  "months": 6,  "price": 4499 },
+        { "label": "12 Months", "months": 12, "price": 8899 }
+      ],
       "category": "premium",
       "isPopular": true,
       "sortOrder": 1
@@ -67,6 +103,8 @@ Your entire "admin panel" is a GitHub Gist JSON file.
   ]
 }
 ```
+
+> **Backward compatible**: the old flat `"plans": [...]` array is still accepted and auto-converted to OTT plans internally.
 
 ### Day-to-Day Updates
 

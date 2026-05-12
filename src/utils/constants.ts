@@ -9,6 +9,7 @@ export const BREAKPOINTS = {
 } as const;
 
 export const OTT_PREVIEW_COUNT = 4;
+export const TV_PREVIEW_COUNT  = 4;
 
 export const INQUIRY_SUCCESS_CLOSE_DELAY_MS = 1500;
 

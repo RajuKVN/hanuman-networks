@@ -1,11 +1,11 @@
 import { useQuery } from '@tanstack/react-query';
 
 import { fetchPlans } from '@/lib/gist';
-import { type Plan } from '@/schemas/plan.schema';
+import { type UnifiedPlan } from '@/schemas/plan.schema';
 import { QUERY_KEYS } from '@/utils/constants';
 
 interface UsePlansResult {
-  plans: Plan[];
+  plans: UnifiedPlan[];
   whatsappNumber: string;
   operatorName: string;
   isLoading: boolean;

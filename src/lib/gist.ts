@@ -1,5 +1,10 @@
 import { env } from '@/config/env';
-import { configSchema, type AppConfig } from '@/schemas/plan.schema';
+import {
+  configSchema,
+  type AppConfigNormalized,
+  type LegacyPlan,
+  type UnifiedPlan,
+} from '@/schemas/plan.schema';
 
 export class GistFetchError extends Error {
   constructor(
@@ -11,7 +16,22 @@ export class GistFetchError extends Error {
   }
 }
 
-export async function fetchPlans(): Promise<AppConfig> {
+/** Converts an old flat-format plan to a unified OTT plan shape. */
+function normalizeLegacy(p: LegacyPlan): UnifiedPlan {
+  return {
+    type: 'ott',
+    id: p.id,
+    name: p.name,
+    category: p.category,
+    isPopular: p.isPopular,
+    sortOrder: p.sortOrder,
+    ottCount: p.ottCount,
+    ottApps: p.ottApps,
+    pricing: [{ label: 'Monthly', months: 1, price: p.price }],
+  };
+}
+
+export async function fetchPlans(): Promise<AppConfigNormalized> {
   let response: Response;
 
   try {
@@ -40,5 +60,14 @@ export async function fetchPlans(): Promise<AppConfig> {
     throw new GistFetchError(`Gist data validation failed: ${issues}`);
   }
 
-  return result.data;
+  const { whatsappNumber, operatorName, ottPlans, internetPlans, comboPlans, plans: legacy } = result.data;
+
+  const allPlans: UnifiedPlan[] = [
+    ...(ottPlans ?? []),
+    ...(internetPlans ?? []),
+    ...(comboPlans ?? []),
+    ...(legacy?.map(normalizeLegacy) ?? []),
+  ];
+
+  return { whatsappNumber, operatorName, plans: allPlans };
 }

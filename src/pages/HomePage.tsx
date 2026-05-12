@@ -17,7 +17,7 @@ export function HomePage(): React.JSX.Element {
   }
 
   if (isLoading) return <LoadingState />;
-  if (error) return <ErrorState onRetry={handleRetry} />;
+  if (error) return <ErrorState message={error.message} onRetry={handleRetry} />;
   if (plans.length === 0) return <EmptyState />;
 
   return <PlanGrid plans={plans} whatsappNumber={whatsappNumber} />;

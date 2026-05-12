@@ -15,11 +15,34 @@
     "day": "రోజు",
     "mbps": "Mbps",
     "ottApps": "OTT యాప్లు",
-    "more": "+{{count}} మరిన్ని"
+    "more": "+{{count}} మరిన్ని",
+    "speed": "ఇంటర్నెట్ వేగం",
+    "tvChannels": "లైవ్ TV ఛానెళ్లు",
+    "tvChannelList": "చేర్చిన TV ఛానెళ్లు"
   },
   "home": {
     "title": "మా ప్లాన్లు",
-    "subtitle": "మీ కుటుంబానికి సరిపడే ప్లాన్‌ని ఎంచుకోండి."
+    "subtitle": "మీ కుటుంబానికి సరిపడే ప్లాన్‌ని ఎంచుకోండి.",
+    "searchPlaceholder": "పేరు, ధర, వేగం, యాప్స్ వెతకండి…",
+    "searchHint": "ఉదాహరణలు: 999, monthly, 100 mbps, hotstar, sports",
+    "sortBy": "క్రమం:",
+    "clearSearch": "సెర్చ్ క్లియర్ చేయండి",
+    "resultsFor": "ఫలితాలు",
+    "noSearchResults": "మీ సెర్చ్‌కు సరిపోయే ప్లాన్లు లేవు.",
+    "noSearchResultsHint": "వేరే కీవర్డ్ ప్రయత్నించండి లేదా సెర్చ్ క్లియర్ చేయండి.",
+    "sort": {
+      "recommended": "సిఫార్సు చేసినవి",
+      "priceLowToHigh": "ధర: తక్కువ నుండి ఎక్కువ",
+      "priceHighToLow": "ధర: ఎక్కువ నుండి తక్కువ",
+      "nameAToZ": "పేరు: A నుండి Z",
+      "speedHighToLow": "వేగం: ఎక్కువ నుండి తక్కువ",
+      "speedLowToHigh": "వేగం: తక్కువ నుండి ఎక్కువ"
+    }
+  },
+  "tabs": {
+    "ott": "OTT",
+    "internet": "ఇంటర్నెట్",
+    "combo": "OTT + WiFi"
   },
   "plan": {
     "validity": "చెల్లుబాటు",
@@ -31,6 +54,11 @@
       "standard": "స్టాండర్డ్",
       "premium": "ప్రీమియం",
       "ultra": "అల్ట్రా"
+    },
+    "type": {
+      "ott": "OTT",
+      "internet": "ఇంటర్నెట్",
+      "combo": "ఇంటర్నెట్ + OTT"
     }
   },
   "inquiry": {
@@ -50,7 +78,7 @@
     "successDesc": "WhatsApp లో మీ విచారణ పూర్తి చేయండి. ఈ ప్యానెల్ త్వరలో మూసుకుంటుంది."
   },
   "header": {
-    "tagline": "కేబుల్ TV & OTT ప్లాన్లు"
+    "tagline": "కేబుల్ TV, ఇంటర్నెట్ & OTT ప్లాన్లు"
   },
   "lang": {
     "en": "EN",

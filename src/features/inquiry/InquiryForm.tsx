@@ -8,24 +8,30 @@ import { z } from 'zod';
 import { InquirySuccess } from '@/features/inquiry/InquirySuccess';
 import { buildMessage } from '@/features/inquiry/utils/buildMessage';
 import { buildWhatsAppUrl } from '@/lib/whatsapp';
-import { type Plan } from '@/schemas/plan.schema';
+import { type PricingOption, type UnifiedPlan } from '@/schemas/plan.schema';
 import { INQUIRY_SUCCESS_CLOSE_DELAY_MS } from '@/utils/constants';
 
 interface InquiryFormProps {
-  plan: Plan;
+  plan: UnifiedPlan;
+  selectedPricing: PricingOption;
   whatsappNumber: string;
   onSuccess: () => void;
 }
 
 const inquirySchema = z.object({
-  name: z.string().min(1, 'errorName'),
+  name:   z.string().min(1, 'errorName'),
   mobile: z.string().regex(/^\d{10}$/, 'errorMobile'),
-  area: z.string().min(1, 'errorArea'),
+  area:   z.string().min(1, 'errorArea'),
 });
 
 type InquiryFields = z.infer<typeof inquirySchema>;
 
-export function InquiryForm({ plan, whatsappNumber, onSuccess }: InquiryFormProps): React.JSX.Element {
+export function InquiryForm({
+  plan,
+  selectedPricing,
+  whatsappNumber,
+  onSuccess,
+}: InquiryFormProps): React.JSX.Element {
   const { t } = useTranslation();
   const [submitted, setSubmitted] = useState(false);
 
@@ -34,7 +40,7 @@ export function InquiryForm({ plan, whatsappNumber, onSuccess }: InquiryFormProp
   });
 
   function onSubmit(data: InquiryFields): void {
-    const message = buildMessage(plan, data);
+    const message = buildMessage(plan, data, selectedPricing);
     const url = buildWhatsAppUrl(whatsappNumber, message);
     window.open(url, '_blank', 'noopener,noreferrer');
     setSubmitted(true);

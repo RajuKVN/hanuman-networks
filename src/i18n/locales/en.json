@@ -15,11 +15,34 @@
     "day": "day",
     "mbps": "Mbps",
     "ottApps": "OTT Apps",
-    "more": "+{{count}} more"
+    "more": "+{{count}} more",
+    "speed": "Internet Speed",
+    "tvChannels": "Live TV Channels",
+    "tvChannelList": "Included TV Channels"
   },
   "home": {
     "title": "Our Plans",
-    "subtitle": "Pick the plan that fits your family."
+    "subtitle": "Pick the plan that fits your family.",
+    "searchPlaceholder": "Search by name, price, speed, apps…",
+    "searchHint": "Try: 999, monthly, 100 mbps, hotstar, sports",
+    "sortBy": "Sort:",
+    "clearSearch": "Clear search",
+    "resultsFor": "results for",
+    "noSearchResults": "No plans match your search.",
+    "noSearchResultsHint": "Try a different keyword or clear your search.",
+    "sort": {
+      "recommended": "Recommended",
+      "priceLowToHigh": "Price: Low to High",
+      "priceHighToLow": "Price: High to Low",
+      "nameAToZ": "Name: A to Z",
+      "speedHighToLow": "Speed: High to Low",
+      "speedLowToHigh": "Speed: Low to High"
+    }
+  },
+  "tabs": {
+    "ott": "OTT",
+    "internet": "Internet",
+    "combo": "OTT + WiFi"
   },
   "plan": {
     "validity": "Validity",
@@ -31,6 +54,11 @@
       "standard": "Standard",
       "premium": "Premium",
       "ultra": "Ultra"
+    },
+    "type": {
+      "ott": "OTT",
+      "internet": "Internet",
+      "combo": "Internet + OTT"
     }
   },
   "inquiry": {
@@ -50,7 +78,7 @@
     "successDesc": "Complete your inquiry in WhatsApp. This panel will close shortly."
   },
   "header": {
-    "tagline": "Cable TV & OTT Plans"
+    "tagline": "Cable TV, Internet & OTT Plans"
   },
   "lang": {
     "en": "EN",
