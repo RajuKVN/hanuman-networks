@@ -8,63 +8,34 @@ const Img = chakra('img');
 
 interface HeaderProps {
   operatorName: string;
+  whatsappNumber?: string;
 }
 
-export function Header({ operatorName }: HeaderProps): React.JSX.Element {
+export function Header({ operatorName, whatsappNumber }: HeaderProps): React.JSX.Element {
   const { t } = useTranslation();
   const displayName = operatorName || 'Hanuman Networks';
+  const contactUrl = whatsappNumber ? `https://wa.me/${whatsappNumber}` : '#plans';
 
   return (
-    <Box
-      as="header"
-      position="sticky"
-      top={0}
-      zIndex={100}
-      backdropFilter="blur(16px) saturate(1.5)"
-      bg="rgba(13, 6, 24, 0.8)"
-      borderBottom="1px solid"
-      borderColor="glass.border"
-      /* GPU compositing layer — prevents sticky-header jitter on mobile during scroll */
-      transform="translateZ(0)"
-      willChange="transform"
-    >
-      <Flex
-        maxW="1400px"
-        mx="auto"
-        px={{ base: 4, md: 6, lg: 8 }}
-        py={3}
-        align="center"
-        justify="space-between"
-        gap={4}
-      >
-        <Flex align="center" gap={3} minW={0}>
-          <Img
-            src="/logo.png"
-            alt="Hanuman Networks logo"
-            /* Mobile: logo alone carries the brand — no text needed beside it */
-            h={{ base: '38px', md: '42px' }}
-            w="auto"
-            objectFit="contain"
-            flexShrink={0}
-          />
-          {/* Hide brand text on mobile — the logo image already includes the name */}
-          <Box display={{ base: 'none', md: 'block' }}>
-            <Heading
-              as="h1"
-              fontSize="xl"
-              fontWeight={700}
-              color="white"
-              letterSpacing="-0.01em"
-              whiteSpace="nowrap"
-            >
-              {displayName}
-            </Heading>
-            <Text fontSize="xs" color="text.muted" mt={0.5} whiteSpace="nowrap">
-              {t('header.tagline')}
-            </Text>
+    <Box as="header" className="site-header">
+      <Flex className="header-inner" align="center" justify="space-between" gap={4}>
+        <a href="#top" className="brand-lockup" aria-label={`${displayName} home`}>
+          <Img src="/logo.png" alt="" className="brand-logo" />
+          <Box className="brand-copy" display={{ base: 'none', sm: 'block' }}>
+            <Heading as="span" className="brand-name">{displayName}</Heading>
+            <Text className="brand-tagline">{t('header.tagline')}</Text>
           </Box>
+        </a>
+        <nav className="header-nav" aria-label={t('header.navigationLabel')}>
+          <a href="#plans">{t('header.plans')}</a>
+        </nav>
+        <Flex align="center" gap={{ base: 2, md: 3 }}>
+          <LanguageToggle />
+          <a className="header-contact" href={contactUrl} target={whatsappNumber ? '_blank' : undefined} rel={whatsappNumber ? 'noreferrer' : undefined}>
+            <span className="contact-dot" aria-hidden="true" />
+            <span>{t('header.contact')}</span>
+          </a>
         </Flex>
-        <LanguageToggle />
       </Flex>
     </Box>
   );

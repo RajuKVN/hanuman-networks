@@ -91,6 +91,22 @@ export const legacyPlanSchema = z.object({
 });
 export type LegacyPlan = z.infer<typeof legacyPlanSchema>;
 
+/* ── Optional promotional banner (validated independently of plans) ── */
+export const offerBannerSchema = z.object({
+  // Treat the banner as optional presentation content: an invalid individual
+  // field should fall back safely instead of hiding the entire banner.
+  enabled: z.boolean().catch(false),
+  eyebrow: z.string().trim().optional().catch(undefined),
+  title: z.string().trim().min(1).catch('Special offer').default('Special offer'),
+  message: z.string().trim().optional().catch(undefined),
+  ctaLabel: z.string().trim().optional().catch(undefined),
+  // Keep these extensible so changing copy/theme labels in the Gist doesn't
+  // invalidate the whole banner. AppShell currently renders the plans CTA.
+  ctaTarget: z.string().trim().optional().catch('plans').default('plans'),
+  theme: z.string().trim().optional().catch('festive').default('festive'),
+});
+export type OfferBanner = z.infer<typeof offerBannerSchema>;
+
 /* ── Config schema (supports new sectional + legacy flat formats) ─── */
 export const configSchema = z.object({
   whatsappNumber: z.string().regex(/^91\d{10}$/, 'Must be 91 + 10 digits'),
@@ -99,6 +115,8 @@ export const configSchema = z.object({
   internetPlans: z.array(internetPlanSchema).optional().default([]),
   comboPlans:    z.array(comboPlanSchema).optional().default([]),
   plans:         z.array(legacyPlanSchema).optional(),
+  // Unknown banner data must never invalidate otherwise valid plan data.
+  offerBanner:   z.unknown().optional(),
 });
 
 export type AppConfig = z.infer<typeof configSchema>;
@@ -108,4 +126,5 @@ export interface AppConfigNormalized {
   whatsappNumber: string;
   operatorName: string;
   plans: UnifiedPlan[];
+  offerBanner?: OfferBanner;
 }

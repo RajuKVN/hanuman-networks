@@ -37,7 +37,10 @@
       "nameAToZ": "Name: A to Z",
       "speedHighToLow": "Speed: High to Low",
       "speedLowToHigh": "Speed: Low to High"
-    }
+    },
+    "emptyEyebrow": "EXPLORE YOUR OPTIONS",
+    "emptyTitle": "Plans made for your kind of connected.",
+    "emptyDescription": "Compare Internet, entertainment and bundled plans in one place."
   },
   "tabs": {
     "ott": "OTT",
@@ -78,10 +81,32 @@
     "successDesc": "Complete your inquiry in WhatsApp. This panel will close shortly."
   },
   "header": {
-    "tagline": "Cable TV, Internet & OTT Plans"
+    "tagline": "Cable TV, Internet & OTT Plans",
+    "plans": "Explore plans",
+    "contact": "Contact us",
+    "navigationLabel": "Main navigation",
+    "footerTagline": "Connected to what matters.",
+    "footerCategory": "INTERNET & ENTERTAINMENT",
+    "browsePlans": "Browse plans ↑"
   },
   "lang": {
     "en": "EN",
     "te": "తె"
+  },
+  "hero": {
+    "eyebrow": "INTERNET · ENTERTAINMENT · YOUR WAY",
+    "titleLine1": "Your world,",
+    "titleLine2": "without the",
+    "titleAccent": "buffer.",
+    "description": "One place for the connection you need and the entertainment you love. Find a plan that fits your home, your habits, and your budget.",
+    "findPlan": "Find your plan",
+    "talkToTeam": "Talk to our team",
+    "footnote": "LOCAL SERVICE. STRAIGHTFORWARD CHOICES.",
+    "connected": "CONNECTED",
+    "signalCaption": "A BETTER KIND OF CONNECTION",
+    "indexLabel": "CONNECTED LIVING",
+    "sectionDivider": "MADE FOR EVERYDAY LIVING",
+    "offerAriaLabel": "Special offer",
+    "dismissOffer": "Dismiss offer"
   }
 }

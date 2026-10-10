@@ -271,9 +271,9 @@ export function PlanGrid({ plans, whatsappNumber }: PlanGridProps): React.JSX.El
 
   return (
     <>
-      <VStack align="stretch" gap={6}>
+      <VStack align="stretch" gap={6} className="catalogue-section">
         {/* Heading */}
-        <Box>
+        <Box className="catalogue-heading">
           <Text
             as="h2"
             fontSize={{ base: '2xl', md: '3xl' }}
@@ -407,6 +407,7 @@ export function PlanGrid({ plans, whatsappNumber }: PlanGridProps): React.JSX.El
         {/* Plan grid */}
         {visiblePlans.length > 0 ? (
           <SimpleGrid
+            className="plan-grid"
             key={activeTab}
             columns={{ base: 1, sm: 2, lg: 3 }}
             gap={{ base: 4, md: 5 }}

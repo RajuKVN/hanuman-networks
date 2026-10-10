@@ -140,3 +140,54 @@ Add the three env vars in **Vercel Dashboard → Project → Settings → Enviro
 | Forms | React Hook Form + Zod |
 | i18n | i18next (EN + Telugu) |
 | Deploy | Vercel (static SPA) |
+
+
+---
+
+## Midnight Spectrum UI & festive banner
+
+The interface uses a midnight-blue base (`#0B1020`), elevated navy surfaces, electric blue actions (`#6585FF`), and restrained violet accents (`#B18CFF`). The existing React, TypeScript, Vite, Chakra UI, TanStack Query, plan models, plan sorting, duration pricing, English/Telugu language toggle, Gist fetch and WhatsApp inquiry flow remain in place.
+
+### Run locally
+
+1. Install Node.js 20 or newer.
+2. Copy `.env.example` to `.env`.
+3. Set `VITE_GIST_URL` to the existing raw URL for your `plans.json` Gist.
+4. Install and run:
+
+   ```bash
+   npm ci
+   npm run dev
+   ```
+
+5. Open the local URL printed by Vite (normally `http://localhost:5173`).
+6. Validate a production build with `npm run build`; run lint with `npm run lint` and tests with `npm test -- --run`.
+
+### Manage the optional festive banner
+
+The banner is an optional top-level `offerBanner` object in the same Gist JSON. Keep the existing `ottPlans`, `internetPlans`, and `comboPlans` arrays and all other configuration unchanged. Add or merge this object at the top level:
+
+```json
+"offerBanner": {
+  "enabled": true,
+  "eyebrow": "FESTIVE SPECIAL",
+  "title": "Celebrate more. Pay less.",
+  "message": "Explore our latest Internet and entertainment offers.",
+  "ctaLabel": "Explore offers",
+  "ctaTarget": "plans",
+  "theme": "festive"
+}
+```
+
+To disable it, set `"enabled": false` (or remove `offerBanner`). The CTA can only target the internal `plans` section. Unsupported or malformed banner data is ignored independently so valid plan data can still be displayed. The close button dismisses the banner for the current page view; it does not write to persistent browser storage. Since plans and banner are parsed from the same Gist response and query, no second fetch is introduced. The website reflects Gist edits according to the existing TanStack Query cache behavior (currently a five-minute stale time).
+
+Operator workflow: open the existing Gist → edit/merge `offerBanner` → set `enabled` true or false → save the Gist → allow the current query cache to refresh, or reload the page to see the latest response.
+
+### Deploy to Vercel
+
+1. Push the updated project to the GitHub repository connected to your existing Vercel project (or upload the source changes through your normal Git workflow).
+2. In Vercel, open the project and confirm the `VITE_GIST_URL` environment variable is set for the desired deployment environments.
+3. Use **Deployments → Redeploy** for an existing commit, or push the new commit to trigger the existing Git integration.
+4. Wait for the deployment to finish, open the production URL, and verify all three plan categories, duration selection, details, English/Telugu toggle, WhatsApp inquiry links, and banner-on/banner-off behavior.
+
+Do not commit `.env`; use `.env.example` as the template. Never put secrets in `VITE_*` values because Vite exposes them to browser code.

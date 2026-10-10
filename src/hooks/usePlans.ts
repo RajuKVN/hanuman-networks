@@ -1,13 +1,14 @@
 import { useQuery } from '@tanstack/react-query';
 
 import { fetchPlans } from '@/lib/gist';
-import { type UnifiedPlan } from '@/schemas/plan.schema';
+import { type OfferBanner, type UnifiedPlan } from '@/schemas/plan.schema';
 import { QUERY_KEYS } from '@/utils/constants';
 
 interface UsePlansResult {
   plans: UnifiedPlan[];
   whatsappNumber: string;
   operatorName: string;
+  offerBanner?: OfferBanner;
   isLoading: boolean;
   error: Error | null;
 }
@@ -22,6 +23,7 @@ export function usePlans(): UsePlansResult {
     plans: data?.plans ?? [],
     whatsappNumber: data?.whatsappNumber ?? '',
     operatorName: data?.operatorName ?? 'Hanuman Networks',
+    offerBanner: data?.offerBanner,
     isLoading,
     error: error as Error | null,
   };

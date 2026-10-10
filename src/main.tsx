@@ -6,6 +6,7 @@ import App from '@/App';
 import { system } from '@/config/theme';
 import { ErrorBoundary } from '@/ErrorBoundary';
 import '@/i18n/index';
+import '@/styles.css';
 
 const rootElement = document.getElementById('root');
 if (!rootElement) {

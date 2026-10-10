@@ -4,6 +4,7 @@ import {
   type AppConfigNormalized,
   type LegacyPlan,
   type UnifiedPlan,
+  offerBannerSchema,
 } from '@/schemas/plan.schema';
 
 export class GistFetchError extends Error {
@@ -61,6 +62,9 @@ export async function fetchPlans(): Promise<AppConfigNormalized> {
   }
 
   const { whatsappNumber, operatorName, ottPlans, internetPlans, comboPlans, plans: legacy } = result.data;
+  // Parse promotions separately so malformed optional banner content cannot hide plans.
+  const bannerResult = offerBannerSchema.safeParse(result.data.offerBanner);
+  const offerBanner = bannerResult.success && bannerResult.data.enabled ? bannerResult.data : undefined;
 
   const allPlans: UnifiedPlan[] = [
     ...(ottPlans ?? []),
@@ -69,5 +73,5 @@ export async function fetchPlans(): Promise<AppConfigNormalized> {
     ...(legacy?.map(normalizeLegacy) ?? []),
   ];
 
-  return { whatsappNumber, operatorName, plans: allPlans };
+  return { whatsappNumber, operatorName, plans: allPlans, offerBanner };
 }

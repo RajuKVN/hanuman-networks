@@ -278,7 +278,7 @@ export function PlanCard({
       <Button
         w="full"
         mt={4}
-        bg="brand.600"
+        bg="brand.500"
         color="white"
         borderRadius="full"
         fontWeight={600}

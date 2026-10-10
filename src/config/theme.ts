@@ -5,23 +5,23 @@ const config = defineConfig({
     tokens: {
       colors: {
         brand: {
-          50:  { value: '#f3eeff' },
-          100: { value: '#e4d4ff' },
-          200: { value: '#cdb0ff' },
-          300: { value: '#b28aff' },
-          400: { value: '#a78bfa' },
-          500: { value: '#8b5cf6' },
-          600: { value: '#7c3aed' },
-          700: { value: '#6d2ddb' },
-          800: { value: '#5b21b6' },
-          900: { value: '#3d1391' },
-          950: { value: '#1e0a5c' },
+          50:  { value: '#f0f3ff' },
+          100: { value: '#dce5ff' },
+          200: { value: '#b8c9ff' },
+          300: { value: '#b18cff' },
+          400: { value: '#91a7ff' },
+          500: { value: '#6585ff' },
+          600: { value: '#4568ee' },
+          700: { value: '#3554ce' },
+          800: { value: '#293f9f' },
+          900: { value: '#1a2b70' },
+          950: { value: '#151d35' },
         },
         dark: {
-          base:     { value: '#05000f' },
-          surface:  { value: '#0a0225' },
-          card:     { value: '#0f0432' },
-          elevated: { value: '#180845' },
+          base:     { value: '#0b1020' },
+          surface:  { value: '#151d35' },
+          card:     { value: '#151d35' },
+          elevated: { value: '#1c2642' },
         },
       },
       fonts: {
@@ -31,20 +31,20 @@ const config = defineConfig({
     },
     semanticTokens: {
       colors: {
-        'brand.primary': { value: '{colors.brand.600}' },
+        'brand.primary': { value: '{colors.brand.500}' },
         'brand.accent':  { value: '{colors.brand.400}' },
         /* More transparent so the background aurora bleeds through */
-        'glass.surface': { value: 'rgba(10, 2, 28, 0.52)' },
-        'glass.border':  { value: 'rgba(167, 139, 250, 0.28)' },
-        'glass.glow':    { value: 'rgba(139, 92, 246, 0.55)' },
-        'text.muted':    { value: 'rgba(255, 255, 255, 0.50)' },
-        'text.subtle':   { value: 'rgba(255, 255, 255, 0.78)' },
+        'glass.surface': { value: 'rgba(21, 29, 53, 0.78)' },
+        'glass.border':  { value: 'rgba(168, 178, 204, 0.16)' },
+        'glass.glow':    { value: 'rgba(101, 133, 255, 0.22)' },
+        'text.muted':    { value: '#a8b2cc' },
+        'text.subtle':   { value: '#c4cbe0' },
       },
     },
   },
   globalCss: {
     body: {
-      bg: '#05000f',
+      bg: '#0b1020',
       color: 'white',
       fontFamily: "'Inter', system-ui, sans-serif",
       minH: '100vh',
@@ -54,7 +54,9 @@ const config = defineConfig({
     /* Smooth scrollbar in webkit */
     '::-webkit-scrollbar':       { width: '5px', height: '5px' },
     '::-webkit-scrollbar-track': { background: 'transparent' },
-    '::-webkit-scrollbar-thumb': { background: 'rgba(139,92,246,0.35)', borderRadius: '9999px' },
+    '::-webkit-scrollbar-thumb': { background: 'rgba(101,133,255,0.42)', borderRadius: '9999px' },
+    'html': { scrollBehavior: 'smooth', scrollPaddingTop: '100px' },
+    'a:focus-visible, button:focus-visible, input:focus-visible': { outline: '2px solid #b18cff', outlineOffset: '3px' },
   },
 });
 
